@@ -1136,7 +1136,8 @@
       formData.append("phone", document.getElementById('phone').value);
       formData.append("state", document.getElementById('state').value);
       formData.append("zip", zip);
-      formData.append("claim", document.querySelector('input[name="claim"]:checked')?.value);
+      const selectedClaim = document.querySelector('.claim-grid .radio-card.selected input');
+formData.append("claim", selectedClaim ? selectedClaim.value : "");
       formData.append("trustedform", certUrl);
 
       const jsonObject = {};
