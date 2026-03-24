@@ -1127,38 +1127,50 @@
 
     if (!ok) return;
 
-    // Generate ref number
-    const ref = 'LC-' + Date.now().toString(36).toUpperCase().slice(-6);
-    document.getElementById('refNum').textContent = ref;
-
-    // Show all nodes done
-    ['node1','node2','node3'].forEach(id => {
-      const n = document.getElementById(id);
-      n.classList.remove('active'); n.classList.add('done');
-    });
-    document.getElementById('fill1').style.width = '100%';
-    document.getElementById('fill2').style.width = '100%';
-    document.querySelectorAll('.step-labels .step-label').forEach(l => l.classList.remove('active'));
-
-    document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
-    document.getElementById('s4').classList.add('active');
-    window.scrollTo({ top: document.getElementById('claimForm').offsetTop - 80, behavior: 'smooth' });
-
     // ── waitForTrustedForm then send ─────────────────────
     waitForTrustedForm(function(certUrl) {
+      const formData = new FormData();
+      formData.append("first_name", document.getElementById('fname').value);
+      formData.append("last_name", document.getElementById('lname').value);
+      formData.append("email", document.getElementById('email').value);
+      formData.append("phone", document.getElementById('phone').value);
+      formData.append("state", document.getElementById('state').value);
+      formData.append("zip", zip);
+      formData.append("claim", document.querySelector('input[name="claim"]:checked')?.value);
+      formData.append("trustedform", certUrl);
+
+      const jsonObject = {};
+      formData.forEach((value, key) => { jsonObject[key] = value; });
+
       fetch("https://b8c6082d012004fe8b3b8b8b9c8d6695.m.pipedream.net", {
         method: "POST",
-        headers: {"Content-Type":"application/json"},
-        body: JSON.stringify({
-          first_name: document.getElementById('fname').value,
-          last_name: document.getElementById('lname').value,
-          email: document.getElementById('email').value,
-          phone: document.getElementById('phone').value,
-          state: document.getElementById('state').value,
-          zip: zip,
-          claim: document.querySelector('input[name="claim"]:checked')?.value,
-          trustedform: certUrl
-        })
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(jsonObject)
+      })
+      .then(response => response.text())
+      .then(data => {
+        console.log("SUCCESS:", data);
+
+        // Generate ref number
+        const ref = 'LC-' + Date.now().toString(36).toUpperCase().slice(-6);
+        document.getElementById('refNum').textContent = ref;
+
+        // Show all nodes done
+        ['node1','node2','node3'].forEach(id => {
+          const n = document.getElementById(id);
+          n.classList.remove('active'); n.classList.add('done');
+        });
+        document.getElementById('fill1').style.width = '100%';
+        document.getElementById('fill2').style.width = '100%';
+        document.querySelectorAll('.step-labels .step-label').forEach(l => l.classList.remove('active'));
+
+        // Show success screen
+        document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
+        document.getElementById('s4').classList.add('active');
+        window.scrollTo({ top: document.getElementById('claimForm').offsetTop - 80, behavior: 'smooth' });
+      })
+      .catch(error => {
+        console.error("ERROR:", error);
       });
     });
   }
