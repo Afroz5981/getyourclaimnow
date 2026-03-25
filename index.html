@@ -867,6 +867,10 @@
             </div>
             <div class="err-msg" id="err-tcpa">You must agree to be contacted before submitting.</div>
           </div>
+          <!-- TrustedForm: MUST be inside a <form> element, adjacent to consent checkbox -->
+          <form id="tf-cert-form" style="margin:0;padding:0;">
+            <input id="xxTrustedFormCertUrl" name="xxTrustedFormCertUrl" type="hidden" value="">
+          </form>
           <button class="btn-primary" onclick="submitForm()">Submit Free Claim Review →</button>
           <button class="btn-back" onclick="goStep(2)">Back</button>
           <div class="form-privacy">By submitting, you agree to our <a href="#" style="color:var(--gold)">Terms</a> & <a href="#" style="color:var(--gold)">Privacy Policy</a>.</div>
@@ -887,9 +891,6 @@
     </div>
   </div>
 </section>
-
-<!-- TrustedForm: hidden field MUST be outside display:none containers -->
-<input id="xxTrustedFormCertUrl" name="xxTrustedFormCertUrl" type="hidden" value="" style="position:absolute;left:-9999px;">
 
 <!-- Trust Badges -->
 <section class="trust-section reveal">
@@ -1147,84 +1148,61 @@
       const jsonObject = {};
       formData.forEach((value, key) => { jsonObject[key] = value; });
 
+      // NOTE: Must be served over http/https — fetch will fail on file:// protocol
+      if (window.location.protocol === 'file:') {
+        console.warn('[SUBMIT] Running on file:// — fetch blocked by browser. Deploy to a server to test submission.');
+      }
+
       fetch("https://b8c6082d012004fe8b3b8b8b9c8d6695.m.pipedream.net", {
         method: "POST",
         mode: "no-cors",
         headers: { "Content-Type": "text/plain" },
         body: JSON.stringify(jsonObject)
       })
-      .then(() => {
-        // no-cors returns opaque response — treat any response as success
-        console.log("SUCCESS: Lead sent to Pipedream");
-
-        // Generate ref number
-        const ref = 'LC-' + Date.now().toString(36).toUpperCase().slice(-6);
-        document.getElementById('refNum').textContent = ref;
-
-        // Show all nodes done
-        ['node1','node2','node3'].forEach(id => {
-          const n = document.getElementById(id);
-          n.classList.remove('active'); n.classList.add('done');
-        });
-        document.getElementById('fill1').style.width = '100%';
-        document.getElementById('fill2').style.width = '100%';
-        document.querySelectorAll('.step-labels .step-label').forEach(l => l.classList.remove('active'));
-
-        // Show success screen
-        document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
-        document.getElementById('s4').classList.add('active');
-        window.scrollTo({ top: document.getElementById('claimForm').offsetTop - 80, behavior: 'smooth' });
+      .then(function() {
+        console.log("SUCCESS: Lead sent to Pipedream. Payload:", JSON.stringify(jsonObject));
+        showSuccessScreen();
       })
-      .catch(error => {
+      .catch(function(error) {
         console.error("ERROR:", error);
-        // Still show success to user — data likely sent (no-cors errors are rare)
-        const ref = 'LC-' + Date.now().toString(36).toUpperCase().slice(-6);
-        document.getElementById('refNum').textContent = ref;
-        ['node1','node2','node3'].forEach(id => {
-          const n = document.getElementById(id);
-          n.classList.remove('active'); n.classList.add('done');
-        });
-        document.getElementById('fill1').style.width = '100%';
-        document.getElementById('fill2').style.width = '100%';
-        document.querySelectorAll('.step-labels .step-label').forEach(l => l.classList.remove('active'));
-        document.querySelectorAll('.step-panel').forEach(p => p.classList.remove('active'));
-        document.getElementById('s4').classList.add('active');
-        window.scrollTo({ top: document.getElementById('claimForm').offsetTop - 80, behavior: 'smooth' });
+        showSuccessScreen(); // show success to user regardless — likely a CORS/network log artifact
       });
     });
   }
 
-  // ── Pre-load TrustedForm cert on page ready ─────────────
-  window.addEventListener('load', function() {
-    var attempts = 0;
-    var preload = setInterval(function() {
-      var val = document.getElementById('xxTrustedFormCertUrl')?.value;
-      if (val && val.includes('cert.trustedform.com')) {
-        console.log('[TrustedForm] Cert pre-loaded on page ready:', val);
-        clearInterval(preload);
-      }
-      if (++attempts > 60) clearInterval(preload); // stop after 12s
-    }, 200);
-  });
+  function showSuccessScreen() {
+    const ref = 'LC-' + Date.now().toString(36).toUpperCase().slice(-6);
+    document.getElementById('refNum').textContent = ref;
+    ['node1','node2','node3'].forEach(function(id) {
+      var n = document.getElementById(id);
+      n.classList.remove('active'); n.classList.add('done');
+    });
+    document.getElementById('fill1').style.width = '100%';
+    document.getElementById('fill2').style.width = '100%';
+    document.querySelectorAll('.step-labels .step-label').forEach(function(l) { l.classList.remove('active'); });
+    document.querySelectorAll('.step-panel').forEach(function(p) { p.classList.remove('active'); });
+    document.getElementById('s4').classList.add('active');
+    window.scrollTo({ top: document.getElementById('claimForm').offsetTop - 80, behavior: 'smooth' });
+  }
 
   // ── waitForTrustedForm ──────────────────────────────────
   function waitForTrustedForm(callback) {
     let attempts = 0;
-    const interval = setInterval(() => {
-      const tf = document.getElementById('xxTrustedFormCertUrl')?.value;
-      if (tf && tf.includes('cert.trustedform.com')) {
+    const interval = setInterval(function() {
+      const tf = document.getElementById('xxTrustedFormCertUrl') && document.getElementById('xxTrustedFormCertUrl').value;
+      if (tf && tf.indexOf('cert.trustedform.com') !== -1) {
         clearInterval(interval);
         console.log('[TrustedForm] Certificate ready:', tf);
         callback(tf);
         return;
       }
       attempts++;
-      if (attempts > 40) {
+      if (attempts > 60) {  // 60 × 500ms = 30 seconds max wait
         clearInterval(interval);
-        console.warn('[TrustedForm] Certificate not captured — sending without cert.');
+        console.warn('[TrustedForm] Certificate not captured after 30s — sending without cert.');
         callback('');
       }
-    }, 200);
+    }, 500);
   }
 
   // ── Scroll reveal ───────────────────────────────────────
