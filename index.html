@@ -1185,17 +1185,16 @@
         client_ip:   clientIp
       };
 
-      console.log('[SUBMIT] Sending to Google Script:', payload);
+      console.log('[SUBMIT] Sending to Pipedream:', JSON.stringify(payload));
 
-      fetch('https://script.google.com/macros/s/AKfycbxRjr4L4A3K5hzYT2hSb3OzKrsBV_Dm89VXssLDa2CfhFKjfySqxmQ1mkKka2DWEj0t/exec, {
+      fetch('https://script.google.com/macros/s/AKfycbzrjR7N5tOVxdQ81N6gBPWVz5WkK2DyY_xyuulioiNEyXoKIgYxRDnhabHPIZrpbaM/exec', {
         method: 'POST',
-headers: {
-  'Content-Type': 'application/json'
-},
-body: JSON.stringify(payload)
-})
-.then(function() {
-        console.log('[SUBMIT] SUCCESS — data sent to Google Sheets.');
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain' },
+        body: JSON.stringify(payload)
+      })
+      .then(function() {
+        console.log('[SUBMIT] SUCCESS — lead delivered to Pipedream.');
         showSuccessScreen();
       })
       .catch(function(err) {
