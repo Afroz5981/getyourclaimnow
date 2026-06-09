@@ -1174,27 +1174,25 @@
     waitForTrustedForm(function(certUrl) {
       var claimInput = document.querySelector('input[name="claim"]:checked');
       var payload = {
-        first_name:  document.getElementById('fname').value,
-        last_name:   document.getElementById('lname').value,
-        email:       document.getElementById('email').value,
-        phone:       document.getElementById('phone').value,
-        state:       document.getElementById('state').value,
-        zip:         zip,
-        claim:       claimInput ? claimInput.value : '',
-        trustedform: certUrl,
-        client_ip:   clientIp
+        first_name:   document.getElementById('fname').value,
+        last_name:    document.getElementById('lname').value,
+        email:        document.getElementById('email').value,
+        phone:        document.getElementById('phone').value,
+        case_type:    claimInput ? claimInput.value : '',
+        trusted_form: certUrl,
+        client_ip:    clientIp
       };
 
-      console.log('[SUBMIT] Sending to Pipedream:', JSON.stringify(payload));
+      console.log('[SUBMIT] Sending to Google Sheets:', JSON.stringify(payload));
 
-      fetch('https://script.google.com/macros/s/AKfycbzrjR7N5tOVxdQ81N6gBPWVz5WkK2DyY_xyuulioiNEyXoKIgYxRDnhabHPIZrpbaM/exec', {
+      fetch('https://script.google.com/macros/s/AKfycbxwlEwjofsesoqRMsCBNEk4yCP8Qp4xLJNsa40KJAB1d6oZxIxdq8J3u_AYfAi7AjcGHQ/exec', {
         method: 'POST',
         mode: 'no-cors',
         headers: { 'Content-Type': 'text/plain' },
         body: JSON.stringify(payload)
       })
       .then(function() {
-        console.log('[SUBMIT] SUCCESS — lead delivered to Pipedream.');
+        console.log('[SUBMIT] SUCCESS — lead delivered to Google Sheets.');
         showSuccessScreen();
       })
       .catch(function(err) {
