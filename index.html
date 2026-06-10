@@ -89,11 +89,23 @@
     overflow: hidden;
     padding: 60px 24px 80px;
   }
+  .hero::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: url('images/hero-bg.png') center/cover no-repeat;
+    opacity: .07;
+    filter: blur(4px);
+    transform: scale(1.04);
+    pointer-events: none;
+    z-index: 0;
+  }
+  .hero-grid { position: relative; z-index: 1; }
   .hero::before {
     content: '';
     position: absolute; inset: 0;
     background: radial-gradient(ellipse at 70% 40%, rgba(201,168,76,0.12) 0%, transparent 65%);
     pointer-events: none;
+    z-index: 0;
   }
   .hero-grid {
     max-width: 1100px;
@@ -433,6 +445,14 @@
   .how-section {
     background: var(--navy);
     padding: 64px 24px;
+  }
+  .how-banner {
+    width: 100%;
+    max-height: 380px;
+    object-fit: cover;
+    display: block;
+    opacity: .85;
+    border-bottom: 3px solid var(--gold);
   }
   .how-inner { max-width: 1100px; margin: 0 auto; }
   .section-eyebrow {
@@ -941,50 +961,52 @@
     <div style="font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#c9a84c;margin-bottom:10px;">Active Cases</div>
     <div style="font-family:'Playfair Display',serif;font-size:clamp(1.6rem,2.5vw,2.2rem);color:#0a1628;margin-bottom:12px;line-height:1.25;">Current Lawsuit & Claim Types We Handle</div>
     <p style="font-size:.95rem;color:#5a6a7e;margin-bottom:40px;max-width:680px;line-height:1.7;">Our network of attorneys is actively accepting cases across these practice areas. Click any claim type to learn more and start your free evaluation.</p>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:20px;">
-      <a href="roundup.html" style="text-decoration:none;display:flex;align-items:flex-start;gap:14px;background:#f7f3ec;border:1.5px solid #d4d9e3;border-radius:12px;padding:22px 20px;transition:all .25s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,.1)';this.style.borderColor='#c9a84c';" onmouseout="this.style.transform='';this.style.boxShadow='';this.style.borderColor='#d4d9e3';">
-        <div style="width:10px;height:10px;border-radius:50%;background:#c9a84c;flex-shrink:0;margin-top:5px;"></div>
-        <div><div style="font-family:'Playfair Display',serif;font-size:1rem;color:#0a1628;margin-bottom:4px;font-weight:700;">Roundup Weedkiller</div><div style="font-size:.8rem;color:#5a6a7e;line-height:1.5;">Non-Hodgkin's lymphoma linked to glyphosate exposure</div><div style="font-size:.75rem;color:#c9a84c;font-weight:600;margin-top:8px;">Free Case Review →</div></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:20px;">
+      <a href="roundup.html" style="text-decoration:none;background:#fff;border:1.5px solid #d4d9e3;border-radius:12px;overflow:hidden;transition:all .25s;display:flex;flex-direction:column;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,.1)';this.style.borderColor='#c9a84c';" onmouseout="this.style.transform='';this.style.boxShadow='';this.style.borderColor='#d4d9e3';">
+        <div style="height:130px;overflow:hidden;"><img src="images/roundup.png" alt="Roundup" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <div style="padding:16px 18px;flex:1;display:flex;flex-direction:column;justify-content:space-between;"><div><div style="font-family:'Playfair Display',serif;font-size:.95rem;color:#0a1628;margin-bottom:4px;font-weight:700;">Roundup Weedkiller</div><div style="font-size:.78rem;color:#5a6a7e;line-height:1.5;">Non-Hodgkin's lymphoma linked to glyphosate exposure</div></div><div style="font-size:.73rem;color:#c9a84c;font-weight:600;margin-top:10px;">Free Case Review →</div></div>
       </a>
-      <a href="depo.html" style="text-decoration:none;display:flex;align-items:flex-start;gap:14px;background:#f7f3ec;border:1.5px solid #d4d9e3;border-radius:12px;padding:22px 20px;transition:all .25s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,.1)';this.style.borderColor='#c9a84c';" onmouseout="this.style.transform='';this.style.boxShadow='';this.style.borderColor='#d4d9e3';">
-        <div style="width:10px;height:10px;border-radius:50%;background:#c9a84c;flex-shrink:0;margin-top:5px;"></div>
-        <div><div style="font-family:'Playfair Display',serif;font-size:1rem;color:#0a1628;margin-bottom:4px;font-weight:700;">Depo-Provera</div><div style="font-size:.8rem;color:#5a6a7e;line-height:1.5;">Brain tumor risk linked to Depo-Provera contraceptive</div><div style="font-size:.75rem;color:#c9a84c;font-weight:600;margin-top:8px;">Free Case Review →</div></div>
+      <a href="depo.html" style="text-decoration:none;background:#fff;border:1.5px solid #d4d9e3;border-radius:12px;overflow:hidden;transition:all .25s;display:flex;flex-direction:column;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,.1)';this.style.borderColor='#c9a84c';" onmouseout="this.style.transform='';this.style.boxShadow='';this.style.borderColor='#d4d9e3';">
+        <div style="height:130px;overflow:hidden;"><img src="images/depo.png" alt="Depo-Provera" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <div style="padding:16px 18px;flex:1;display:flex;flex-direction:column;justify-content:space-between;"><div><div style="font-family:'Playfair Display',serif;font-size:.95rem;color:#0a1628;margin-bottom:4px;font-weight:700;">Depo-Provera</div><div style="font-size:.78rem;color:#5a6a7e;line-height:1.5;">Brain tumor risk linked to Depo-Provera contraceptive</div></div><div style="font-size:.73rem;color:#c9a84c;font-weight:600;margin-top:10px;">Free Case Review →</div></div>
       </a>
-      <a href="rideshare.html" style="text-decoration:none;display:flex;align-items:flex-start;gap:14px;background:#f7f3ec;border:1.5px solid #d4d9e3;border-radius:12px;padding:22px 20px;transition:all .25s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,.1)';this.style.borderColor='#c9a84c';" onmouseout="this.style.transform='';this.style.boxShadow='';this.style.borderColor='#d4d9e3';">
-        <div style="width:10px;height:10px;border-radius:50%;background:#c9a84c;flex-shrink:0;margin-top:5px;"></div>
-        <div><div style="font-family:'Playfair Display',serif;font-size:1rem;color:#0a1628;margin-bottom:4px;font-weight:700;">Rideshare Assault</div><div style="font-size:.8rem;color:#5a6a7e;line-height:1.5;">Uber & Lyft sexual assault survivor claims</div><div style="font-size:.75rem;color:#c9a84c;font-weight:600;margin-top:8px;">Free Case Review →</div></div>
+      <a href="rideshare.html" style="text-decoration:none;background:#fff;border:1.5px solid #d4d9e3;border-radius:12px;overflow:hidden;transition:all .25s;display:flex;flex-direction:column;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,.1)';this.style.borderColor='#c9a84c';" onmouseout="this.style.transform='';this.style.boxShadow='';this.style.borderColor='#d4d9e3';">
+        <div style="height:130px;overflow:hidden;"><img src="images/rideshare.png" alt="Rideshare Assault" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <div style="padding:16px 18px;flex:1;display:flex;flex-direction:column;justify-content:space-between;"><div><div style="font-family:'Playfair Display',serif;font-size:.95rem;color:#0a1628;margin-bottom:4px;font-weight:700;">Rideshare Assault</div><div style="font-size:.78rem;color:#5a6a7e;line-height:1.5;">Uber & Lyft sexual assault survivor claims</div></div><div style="font-size:.73rem;color:#c9a84c;font-weight:600;margin-top:10px;">Free Case Review →</div></div>
       </a>
-      <a href="roblox.html" style="text-decoration:none;display:flex;align-items:flex-start;gap:14px;background:#f7f3ec;border:1.5px solid #d4d9e3;border-radius:12px;padding:22px 20px;transition:all .25s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,.1)';this.style.borderColor='#c9a84c';" onmouseout="this.style.transform='';this.style.boxShadow='';this.style.borderColor='#d4d9e3';">
-        <div style="width:10px;height:10px;border-radius:50%;background:#c9a84c;flex-shrink:0;margin-top:5px;"></div>
-        <div><div style="font-family:'Playfair Display',serif;font-size:1rem;color:#0a1628;margin-bottom:4px;font-weight:700;">Roblox Exploitation</div><div style="font-size:.8rem;color:#5a6a7e;line-height:1.5;">Child exploitation and predator exposure on Roblox</div><div style="font-size:.75rem;color:#c9a84c;font-weight:600;margin-top:8px;">Free Case Review →</div></div>
+      <a href="roblox.html" style="text-decoration:none;background:#fff;border:1.5px solid #d4d9e3;border-radius:12px;overflow:hidden;transition:all .25s;display:flex;flex-direction:column;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,.1)';this.style.borderColor='#c9a84c';" onmouseout="this.style.transform='';this.style.boxShadow='';this.style.borderColor='#d4d9e3';">
+        <div style="height:130px;overflow:hidden;"><img src="images/roblox.png" alt="Roblox" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <div style="padding:16px 18px;flex:1;display:flex;flex-direction:column;justify-content:space-between;"><div><div style="font-family:'Playfair Display',serif;font-size:.95rem;color:#0a1628;margin-bottom:4px;font-weight:700;">Roblox Exploitation</div><div style="font-size:.78rem;color:#5a6a7e;line-height:1.5;">Child exploitation and predator exposure on Roblox</div></div><div style="font-size:.73rem;color:#c9a84c;font-weight:600;margin-top:10px;">Free Case Review →</div></div>
       </a>
-      <a href="mva.html" style="text-decoration:none;display:flex;align-items:flex-start;gap:14px;background:#f7f3ec;border:1.5px solid #d4d9e3;border-radius:12px;padding:22px 20px;transition:all .25s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,.1)';this.style.borderColor='#c9a84c';" onmouseout="this.style.transform='';this.style.boxShadow='';this.style.borderColor='#d4d9e3';">
-        <div style="width:10px;height:10px;border-radius:50%;background:#c9a84c;flex-shrink:0;margin-top:5px;"></div>
-        <div><div style="font-family:'Playfair Display',serif;font-size:1rem;color:#0a1628;margin-bottom:4px;font-weight:700;">Motor Vehicle Accident</div><div style="font-size:.8rem;color:#5a6a7e;line-height:1.5;">Car accident injury and personal injury claims</div><div style="font-size:.75rem;color:#c9a84c;font-weight:600;margin-top:8px;">Free Case Review →</div></div>
+      <a href="mva.html" style="text-decoration:none;background:#fff;border:1.5px solid #d4d9e3;border-radius:12px;overflow:hidden;transition:all .25s;display:flex;flex-direction:column;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,.1)';this.style.borderColor='#c9a84c';" onmouseout="this.style.transform='';this.style.boxShadow='';this.style.borderColor='#d4d9e3';">
+        <div style="height:130px;overflow:hidden;"><img src="images/mva.png" alt="Motor Vehicle Accident" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <div style="padding:16px 18px;flex:1;display:flex;flex-direction:column;justify-content:space-between;"><div><div style="font-family:'Playfair Display',serif;font-size:.95rem;color:#0a1628;margin-bottom:4px;font-weight:700;">Motor Vehicle Accident</div><div style="font-size:.78rem;color:#5a6a7e;line-height:1.5;">Car accident injury and personal injury claims</div></div><div style="font-size:.73rem;color:#c9a84c;font-weight:600;margin-top:10px;">Free Case Review →</div></div>
       </a>
-      <a href="snapchat.html" style="text-decoration:none;display:flex;align-items:flex-start;gap:14px;background:#f7f3ec;border:1.5px solid #d4d9e3;border-radius:12px;padding:22px 20px;transition:all .25s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,.1)';this.style.borderColor='#c9a84c';" onmouseout="this.style.transform='';this.style.boxShadow='';this.style.borderColor='#d4d9e3';">
-        <div style="width:10px;height:10px;border-radius:50%;background:#c9a84c;flex-shrink:0;margin-top:5px;"></div>
-        <div><div style="font-family:'Playfair Display',serif;font-size:1rem;color:#0a1628;margin-bottom:4px;font-weight:700;">Snapchat Abuse</div><div style="font-size:.8rem;color:#5a6a7e;line-height:1.5;">Child exploitation and predator access via Snapchat</div><div style="font-size:.75rem;color:#c9a84c;font-weight:600;margin-top:8px;">Free Case Review →</div></div>
+      <a href="snapchat.html" style="text-decoration:none;background:#fff;border:1.5px solid #d4d9e3;border-radius:12px;overflow:hidden;transition:all .25s;display:flex;flex-direction:column;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,.1)';this.style.borderColor='#c9a84c';" onmouseout="this.style.transform='';this.style.boxShadow='';this.style.borderColor='#d4d9e3';">
+        <div style="height:130px;overflow:hidden;"><img src="images/snapchat.png" alt="Snapchat Abuse" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <div style="padding:16px 18px;flex:1;display:flex;flex-direction:column;justify-content:space-between;"><div><div style="font-family:'Playfair Display',serif;font-size:.95rem;color:#0a1628;margin-bottom:4px;font-weight:700;">Snapchat Abuse</div><div style="font-size:.78rem;color:#5a6a7e;line-height:1.5;">Child exploitation and predator access via Snapchat</div></div><div style="font-size:.73rem;color:#c9a84c;font-weight:600;margin-top:10px;">Free Case Review →</div></div>
       </a>
-      <a href="talcum.html" style="text-decoration:none;display:flex;align-items:flex-start;gap:14px;background:#f7f3ec;border:1.5px solid #d4d9e3;border-radius:12px;padding:22px 20px;transition:all .25s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,.1)';this.style.borderColor='#c9a84c';" onmouseout="this.style.transform='';this.style.boxShadow='';this.style.borderColor='#d4d9e3';">
-        <div style="width:10px;height:10px;border-radius:50%;background:#c9a84c;flex-shrink:0;margin-top:5px;"></div>
-        <div><div style="font-family:'Playfair Display',serif;font-size:1rem;color:#0a1628;margin-bottom:4px;font-weight:700;">Talcum Powder</div><div style="font-size:.8rem;color:#5a6a7e;line-height:1.5;">J&J talcum powder linked to ovarian cancer</div><div style="font-size:.75rem;color:#c9a84c;font-weight:600;margin-top:8px;">Free Case Review →</div></div>
+      <a href="talcum.html" style="text-decoration:none;background:#fff;border:1.5px solid #d4d9e3;border-radius:12px;overflow:hidden;transition:all .25s;display:flex;flex-direction:column;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,.1)';this.style.borderColor='#c9a84c';" onmouseout="this.style.transform='';this.style.boxShadow='';this.style.borderColor='#d4d9e3';">
+        <div style="height:130px;overflow:hidden;"><img src="images/talcum.png" alt="Talcum Powder" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <div style="padding:16px 18px;flex:1;display:flex;flex-direction:column;justify-content:space-between;"><div><div style="font-family:'Playfair Display',serif;font-size:.95rem;color:#0a1628;margin-bottom:4px;font-weight:700;">Talcum Powder</div><div style="font-size:.78rem;color:#5a6a7e;line-height:1.5;">J&J talcum powder linked to ovarian cancer</div></div><div style="font-size:.73rem;color:#c9a84c;font-weight:600;margin-top:10px;">Free Case Review →</div></div>
       </a>
-      <a href="paraquat.html" style="text-decoration:none;display:flex;align-items:flex-start;gap:14px;background:#f7f3ec;border:1.5px solid #d4d9e3;border-radius:12px;padding:22px 20px;transition:all .25s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,.1)';this.style.borderColor='#c9a84c';" onmouseout="this.style.transform='';this.style.boxShadow='';this.style.borderColor='#d4d9e3';">
-        <div style="width:10px;height:10px;border-radius:50%;background:#c9a84c;flex-shrink:0;margin-top:5px;"></div>
-        <div><div style="font-family:'Playfair Display',serif;font-size:1rem;color:#0a1628;margin-bottom:4px;font-weight:700;">Paraquat</div><div style="font-size:.8rem;color:#5a6a7e;line-height:1.5;">Paraquat herbicide linked to Parkinson's disease</div><div style="font-size:.75rem;color:#c9a84c;font-weight:600;margin-top:8px;">Free Case Review →</div></div>
+      <a href="paraquat.html" style="text-decoration:none;background:#fff;border:1.5px solid #d4d9e3;border-radius:12px;overflow:hidden;transition:all .25s;display:flex;flex-direction:column;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,.1)';this.style.borderColor='#c9a84c';" onmouseout="this.style.transform='';this.style.boxShadow='';this.style.borderColor='#d4d9e3';">
+        <div style="height:130px;overflow:hidden;"><img src="images/paraquat.png" alt="Paraquat" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <div style="padding:16px 18px;flex:1;display:flex;flex-direction:column;justify-content:space-between;"><div><div style="font-family:'Playfair Display',serif;font-size:.95rem;color:#0a1628;margin-bottom:4px;font-weight:700;">Paraquat</div><div style="font-size:.78rem;color:#5a6a7e;line-height:1.5;">Paraquat herbicide linked to Parkinson's disease</div></div><div style="font-size:.73rem;color:#c9a84c;font-weight:600;margin-top:10px;">Free Case Review →</div></div>
       </a>
-      <a href="ssdi.html" style="text-decoration:none;display:flex;align-items:flex-start;gap:14px;background:#f7f3ec;border:1.5px solid #d4d9e3;border-radius:12px;padding:22px 20px;transition:all .25s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,.1)';this.style.borderColor='#c9a84c';" onmouseout="this.style.transform='';this.style.boxShadow='';this.style.borderColor='#d4d9e3';">
-        <div style="width:10px;height:10px;border-radius:50%;background:#c9a84c;flex-shrink:0;margin-top:5px;"></div>
-        <div><div style="font-family:'Playfair Display',serif;font-size:1rem;color:#0a1628;margin-bottom:4px;font-weight:700;">SSDI Benefits</div><div style="font-size:.8rem;color:#5a6a7e;line-height:1.5;">Social Security Disability Insurance claims & appeals</div><div style="font-size:.75rem;color:#c9a84c;font-weight:600;margin-top:8px;">Free Case Review →</div></div>
+      <a href="ssdi.html" style="text-decoration:none;background:#fff;border:1.5px solid #d4d9e3;border-radius:12px;overflow:hidden;transition:all .25s;display:flex;flex-direction:column;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,.1)';this.style.borderColor='#c9a84c';" onmouseout="this.style.transform='';this.style.boxShadow='';this.style.borderColor='#d4d9e3';">
+        <div style="height:130px;overflow:hidden;"><img src="images/ssdi.png" alt="SSDI" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <div style="padding:16px 18px;flex:1;display:flex;flex-direction:column;justify-content:space-between;"><div><div style="font-family:'Playfair Display',serif;font-size:.95rem;color:#0a1628;margin-bottom:4px;font-weight:700;">SSDI Benefits</div><div style="font-size:.78rem;color:#5a6a7e;line-height:1.5;">Social Security Disability Insurance claims & appeals</div></div><div style="font-size:.73rem;color:#c9a84c;font-weight:600;margin-top:10px;">Free Case Review →</div></div>
       </a>
-      <a href="ozempic.html" style="text-decoration:none;display:flex;align-items:flex-start;gap:14px;background:#f7f3ec;border:1.5px solid #d4d9e3;border-radius:12px;padding:22px 20px;transition:all .25s;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,.1)';this.style.borderColor='#c9a84c';" onmouseout="this.style.transform='';this.style.boxShadow='';this.style.borderColor='#d4d9e3';">
-        <div style="width:10px;height:10px;border-radius:50%;background:#c9a84c;flex-shrink:0;margin-top:5px;"></div>
-        <div><div style="font-family:'Playfair Display',serif;font-size:1rem;color:#0a1628;margin-bottom:4px;font-weight:700;">Ozempic / Wegovy</div><div style="font-size:.8rem;color:#5a6a7e;line-height:1.5;">Stomach paralysis & bowel injury from GLP-1 drugs</div><div style="font-size:.75rem;color:#c9a84c;font-weight:600;margin-top:8px;">Free Case Review →</div></div>
+      <a href="ozempic.html" style="text-decoration:none;background:#fff;border:1.5px solid #d4d9e3;border-radius:12px;overflow:hidden;transition:all .25s;display:flex;flex-direction:column;" onmouseover="this.style.transform='translateY(-4px)';this.style.boxShadow='0 16px 40px rgba(0,0,0,.1)';this.style.borderColor='#c9a84c';" onmouseout="this.style.transform='';this.style.boxShadow='';this.style.borderColor='#d4d9e3';">
+        <div style="height:130px;overflow:hidden;"><img src="images/ozempic.png" alt="Ozempic" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+        <div style="padding:16px 18px;flex:1;display:flex;flex-direction:column;justify-content:space-between;"><div><div style="font-family:'Playfair Display',serif;font-size:.95rem;color:#0a1628;margin-bottom:4px;font-weight:700;">Ozempic / Wegovy</div><div style="font-size:.78rem;color:#5a6a7e;line-height:1.5;">Stomach paralysis & bowel injury from GLP-1 drugs</div></div><div style="font-size:.73rem;color:#c9a84c;font-weight:600;margin-top:10px;">Free Case Review →</div></div>
       </a>
     </div>
   </div>
 </section>
+
+<img src="images/how-it-works.png" alt="Attorney consulting with client" class="how-banner">
 
 <!-- How It Works -->
 <section class="how-section">
