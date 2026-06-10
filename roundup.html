@@ -29,7 +29,8 @@
 
   /* HERO */
   .hero { background: var(--navy); padding: 80px 24px; position: relative; overflow: hidden; }
-  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 50%, rgba(201,168,76,0.1) 0%, transparent 65%); pointer-events: none; }
+  .hero::after { content: ''; position: absolute; inset: 0; background: url('images/roundup.png') center/cover no-repeat; opacity: 0.08; filter: blur(6px); transform: scale(1.06); pointer-events: none; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 70% 50%, rgba(201,168,76,0.1) 0%, transparent 65%); pointer-events: none; z-index: 0; }
   .hero-inner { max-width: 1200px; margin: 0 auto; position: relative; z-index: 1; }
   .hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: rgba(201,168,76,0.15); border: 1px solid rgba(201,168,76,0.4); border-radius: 2px; padding: 6px 14px; font-size: 0.75rem; font-weight: 700; color: var(--gold); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 20px; }
   .hero-h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 4.5vw, 3.8rem); line-height: 1.15; color: var(--white); margin-bottom: 24px; max-width: 800px; }
@@ -296,8 +297,6 @@
 <!-- Stats Bar -->
 <div class="stats-bar">
   <div class="stats-inner">
-    <div class="stat-item"><div class="stat-num">$10B+</div><div class="stat-label">Paid in Settlements</div></div>
-    <div class="stat-divider"></div>
     <div class="stat-item"><div class="stat-num">100K+</div><div class="stat-label">Cases Filed</div></div>
     <div class="stat-divider"></div>
     <div class="stat-item"><div class="stat-num">$0</div><div class="stat-label">Upfront Cost</div></div>
