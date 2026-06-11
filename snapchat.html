@@ -17,20 +17,20 @@ header{background:var(--navy);padding:0 24px;position:sticky;top:0;z-index:100;b
 .logo-icon{width:34px;height:34px;background:var(--gold);border-radius:3px;display:flex;align-items:center;justify-content:center;font-size:18px;}
 .logo-text{font-family:'Playfair Display',serif;font-size:1.25rem;color:#fff;letter-spacing:.02em;}
 .logo-text span{color:var(--gold);}
-.hero{background:var(--navy);padding:56px 24px 48px;position:relative;overflow:hidden;}
+.hero{background:var(--navy);padding:36px 24px 32px;position:relative;overflow:hidden;}
 
 .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 70% 50%,rgba(201,168,76,.1) 0%,transparent 65%);pointer-events:none;z-index:0;}
 .hero-inner{max-width:1200px;margin:0 auto;position:relative;z-index:2;}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.4);border-radius:2px;padding:6px 14px;font-size:.75rem;font-weight:700;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;margin-bottom:20px;}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.4);border-radius:2px;padding:6px 14px;font-size:.75rem;font-weight:700;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;margin-bottom:12px;}
 .hero-h1{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,4.5vw,3.8rem);line-height:1.15;color:#fff;margin-bottom:24px;max-width:800px;}
 .hero-h1 em{color:var(--gold);font-style:normal;}
-.hero-sub{color:rgba(255,255,255,.75);font-size:1.1rem;line-height:1.75;margin-bottom:20px;max-width:720px;}
-.hero-bullets{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:10px;max-width:700px;margin-bottom:0;}
-@media(max-width:600px){.hero-bullets{grid-template-columns:1fr;}}
-.hero-bullets li{display:flex;align-items:center;gap:12px;color:rgba(255,255,255,.85);font-size:.95rem;}
+.hero-sub{color:rgba(255,255,255,.75);font-size:.95rem;line-height:1.6;margin-bottom:14px;max-width:720px;}
+.hero-bullets{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:8px;max-width:700px;margin-bottom:0;}
+@media(max-width:600px){.hero-bullets{grid-template-columns:1fr;}.hero-h1{font-size:1.55rem;}.hero-sub{font-size:.85rem;}.hero{padding:24px 16px 20px;}}
+.hero-bullets li{display:flex;align-items:center;gap:12px;color:rgba(255,255,255,.85);font-size:.88rem;}
 .hero-bullets li::before{content:'✓';width:24px;height:24px;background:var(--gold);color:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:800;flex-shrink:0;}
-.hero-cta{margin-top:24px;}
-.hero-cta a{display:inline-block;background:linear-gradient(135deg,var(--gold),#a07c38);color:var(--navy);font-size:1.1rem;font-weight:800;padding:16px 40px;border-radius:var(--radius);text-decoration:none;box-shadow:0 8px 32px rgba(201,168,76,.4);transition:all .25s;}
+.hero-cta{margin-top:16px;}
+.hero-cta a{display:inline-block;background:linear-gradient(135deg,var(--gold),#a07c38);color:var(--navy);font-size:1.1rem;font-weight:800;padding:13px 32px;border-radius:var(--radius);text-decoration:none;box-shadow:0 8px 32px rgba(201,168,76,.4);transition:all .25s;}
 .hero-cta a:hover{transform:translateY(-2px);}
 .hero-cta p{margin-top:12px;font-size:.78rem;color:rgba(255,255,255,.35);}
 .stats-bar{background:var(--gold);padding:22px 24px;}
@@ -47,7 +47,7 @@ header{background:var(--navy);padding:0 24px;position:sticky;top:0;z-index:100;b
 .section-eyebrow{font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
 .section-h{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,2.5vw,2.2rem);color:var(--navy);margin-bottom:24px;line-height:1.25;}
 .section-p{font-size:.97rem;color:var(--muted);line-height:1.8;margin-bottom:18px;}
-.about-list{list-style:none;margin-top:24px;display:flex;flex-direction:column;gap:14px;}
+.about-list{list-style:none;margin-top:16px;display:flex;flex-direction:column;gap:14px;}
 .about-list li{display:flex;align-items:flex-start;gap:12px;font-size:.93rem;color:var(--text);line-height:1.55;background:#faf9f6;border:1px solid var(--border);border-radius:6px;padding:14px 16px;}
 .about-list li::before{content:'⚠';color:var(--red);flex-shrink:0;}
 .form-section{background:var(--navy);padding:72px 24px;position:relative;overflow:hidden;}
