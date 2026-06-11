@@ -80,7 +80,7 @@
     display: flex; align-items: center; gap: 6px;
   }
   .header-phone::before { content: "📞"; font-size: 0.85rem; }
-  @media(max-width:500px){ .header-phone { display: none; } }
+  @media(max-width:500px){ .header-phone { font-size: 0; gap: 0; } .header-phone::before { content: "📞"; font-size: 1.1rem; } }
 
   /* ─── HERO ────────────────────────────────────────────── */
   .hero {
