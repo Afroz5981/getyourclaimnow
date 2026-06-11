@@ -213,10 +213,7 @@
     color: rgba(10,22,40,0.7);
     margin-top: 4px;
   }
-  .form-body { padding: 20px 22px; max-height: 480px; overflow-y: auto; }
-  .form-body::-webkit-scrollbar { width: 6px; }
-  .form-body::-webkit-scrollbar-track { background: rgba(255,255,255,0.03); }
-  .form-body::-webkit-scrollbar-thumb { background: rgba(201,168,76,0.3); border-radius: 3px; }
+  .form-body { padding: 20px 22px; }
 
   /* Steps indicator */
   .steps-bar {
@@ -725,82 +722,44 @@
           <div class="field">
             <label>Personal Injury Type <span class="req">*</span></label>
             <div class="claim-groups-wrap">
-            <div style="margin-bottom:10px;">
-              <input type="text" id="claimSearch" placeholder="🔍  Search claim type…" oninput="filterClaims()" style="width:100%;border:1.5px solid var(--border);border-radius:var(--radius);padding:9px 12px;font-size:0.85rem;font-family:'DM Sans',sans-serif;outline:none;background:#fafbfc;color:var(--text);">
-            </div>
-
-            <!-- Round Up / Herbicides -->
-            <div class="claim-group" data-group="Round Up & Herbicides">
-              <div class="claim-group-label">🌿 Round Up &amp; Herbicides</div>
-              <div class="radio-grid claim-grid" style="grid-template-columns:1fr 1fr;">
-                <label class="radio-card" onclick="selectRadio(this,'claimType')"><input type="radio" name="claim" value="ROUND UP"><div class="radio-dot"></div>ROUND UP</label>
-                <label class="radio-card" onclick="selectRadio(this,'claimType')"><input type="radio" name="claim" value="PARAQUAT"><div class="radio-dot"></div>PARAQUAT</label>
-              </div>
-            </div>
-
-            <!-- Baby & Infant -->
-            <div class="claim-group" data-group="Baby & Infant">
-              <div class="claim-group-label">🍼 Baby &amp; Infant</div>
-              <div class="radio-grid claim-grid" style="grid-template-columns:1fr 1fr;">
-                <label class="radio-card" onclick="selectRadio(this,'claimType')"><input type="radio" name="claim" value="BABY FORMULA"><div class="radio-dot"></div>BABY FORMULA</label>
-              </div>
-            </div>
-
-            <!-- Water / Environmental -->
-            <div class="claim-group" data-group="Water & Environmental">
-              <div class="claim-group-label">💧 Water &amp; Environmental</div>
-              <div class="radio-grid claim-grid" style="grid-template-columns:1fr 1fr;">
-                <label class="radio-card" onclick="selectRadio(this,'claimType')"><input type="radio" name="claim" value="PFAS"><div class="radio-dot"></div>PFAS</label>
-                <label class="radio-card" onclick="selectRadio(this,'claimType')"><input type="radio" name="claim" value="AFFF"><div class="radio-dot"></div>AFFF</label>
-              </div>
-            </div>
-
-            <!-- Pharmaceuticals -->
-            <div class="claim-group" data-group="Pharmaceuticals">
-              <div class="claim-group-label">💊 Pharmaceuticals</div>
-              <div class="radio-grid claim-grid" style="grid-template-columns:1fr 1fr;">
-                <label class="radio-card" onclick="selectRadio(this,'claimType')"><input type="radio" name="claim" value="DEPO-PROVERA"><div class="radio-dot"></div>DEPO-PROVERA</label>
-                <label class="radio-card" onclick="selectRadio(this,'claimType')"><input type="radio" name="claim" value="OZEMPIC"><div class="radio-dot"></div>OZEMPIC</label>
-                <label class="radio-card" onclick="selectRadio(this,'claimType')"><input type="radio" name="claim" value="ZANTAC"><div class="radio-dot"></div>ZANTAC</label>
-                <label class="radio-card" onclick="selectRadio(this,'claimType')"><input type="radio" name="claim" value="PARAGARD"><div class="radio-dot"></div>PARAGARD</label>
-              </div>
-            </div>
-
-            <!-- Personal Care -->
-            <div class="claim-group" data-group="Personal Care">
-              <div class="claim-group-label">🧴 Personal Care</div>
-              <div class="radio-grid claim-grid" style="grid-template-columns:1fr 1fr;">
-                <label class="radio-card" onclick="selectRadio(this,'claimType')"><input type="radio" name="claim" value="HAIR RELAXER"><div class="radio-dot"></div>HAIR RELAXER</label>
-                <label class="radio-card" onclick="selectRadio(this,'claimType')"><input type="radio" name="claim" value="TALCUM POWDER"><div class="radio-dot"></div>TALCUM POWDER</label>
-              </div>
-            </div>
-
-            <!-- Auto & Rideshare -->
-            <div class="claim-group" data-group="Auto & Rideshare">
-              <div class="claim-group-label">🚗 Auto &amp; Rideshare</div>
-              <div class="radio-grid claim-grid" style="grid-template-columns:1fr 1fr;">
-                <label class="radio-card" onclick="selectRadio(this,'claimType')"><input type="radio" name="claim" value="RIDESHARE"><div class="radio-dot"></div>RIDESHARE</label>
-                <label class="radio-card" onclick="selectRadio(this,'claimType')"><input type="radio" name="claim" value="MVA"><div class="radio-dot"></div>MVA</label>
-              </div>
-            </div>
-
-            <!-- Industrial / Occupational -->
-            <div class="claim-group" data-group="Industrial & Occupational">
-              <div class="claim-group-label">🏭 Industrial &amp; Occupational</div>
-              <div class="radio-grid claim-grid" style="grid-template-columns:1fr 1fr;">
-                <label class="radio-card" onclick="selectRadio(this,'claimType')"><input type="radio" name="claim" value="MESOTHELIOMA"><div class="radio-dot"></div>MESOTHELIOMA</label>
-              </div>
-            </div>
-
-            <!-- Other -->
-            <div class="claim-group" data-group="Other">
-              <div class="claim-group-label">⚖️ Other</div>
-              <div class="radio-grid claim-grid" style="grid-template-columns:1fr 1fr;">
-                <label class="radio-card" onclick="selectRadio(this,'claimType')"><input type="radio" name="claim" value="WILDFIRE CA"><div class="radio-dot"></div>WILDFIRE CA</label>
-                <label class="radio-card" onclick="selectRadio(this,'claimType')"><input type="radio" name="claim" value="ROBLOX"><div class="radio-dot"></div>ROBLOX</label>
-                <label class="radio-card" onclick="selectRadio(this,'claimType')"><input type="radio" name="claim" value="MD DETENTION"><div class="radio-dot"></div>MD DETENTION</label>
-              </div>
-            </div>
+            <select id="claimType" name="claim" onchange="hideErr('err-claimType')" style="width:100%;border:1.5px solid rgba(255,255,255,0.12);border-radius:var(--radius);padding:11px 14px;font-size:0.88rem;font-family:'DM Sans',sans-serif;outline:none;background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.95);cursor:pointer;">
+              <option value="">Select your claim type…</option>
+              <optgroup label="Roundup & Herbicides">
+                <option value="ROUND UP">Round Up</option>
+                <option value="PARAQUAT">Paraquat</option>
+              </optgroup>
+              <optgroup label="Baby & Infant">
+                <option value="BABY FORMULA">Baby Formula</option>
+              </optgroup>
+              <optgroup label="Water & Environmental">
+                <option value="PFAS">PFAS</option>
+                <option value="AFFF">AFFF</option>
+              </optgroup>
+              <optgroup label="Pharmaceuticals">
+                <option value="DEPO-PROVERA">Depo-Provera</option>
+                <option value="OZEMPIC">Ozempic / Wegovy</option>
+                <option value="ZANTAC">Zantac</option>
+                <option value="PARAGARD">Paragard</option>
+              </optgroup>
+              <optgroup label="Personal Care">
+                <option value="HAIR RELAXER">Hair Relaxer</option>
+                <option value="TALCUM POWDER">Talcum Powder</option>
+              </optgroup>
+              <optgroup label="Auto & Rideshare">
+                <option value="RIDESHARE">Rideshare Assault</option>
+                <option value="MVA">Motor Vehicle Accident</option>
+              </optgroup>
+              <optgroup label="Industrial & Occupational">
+                <option value="MESOTHELIOMA">Mesothelioma</option>
+              </optgroup>
+              <optgroup label="Other Cases">
+                <option value="WILDFIRE CA">California Wildfire</option>
+                <option value="ROBLOX">Roblox Exploitation</option>
+                <option value="SNAPCHAT">Snapchat Abuse</option>
+                <option value="SSDI">SSDI Benefits</option>
+                <option value="MD DETENTION">MD Detention</option>
+              </optgroup>
+            </select>
             </div><!-- /claim-groups-wrap -->
             <div class="err-msg" id="err-claimType">Please select an injury type.</div>
           </div>
@@ -1168,8 +1127,8 @@
   function validateStep(step) {
     var ok = true;
     if (step === 1) {
-      var selected = document.querySelector('.claim-grid .radio-card.selected, #claimType .radio-card.selected');
-      if (!selected) { showErr('err-claimType'); ok = false; } else hideErr('err-claimType');
+      var ct = document.getElementById('claimType');
+      if (!ct.value) { showErr('err-claimType'); ok = false; } else hideErr('err-claimType');
     }
     if (step === 2) {
       var sel = document.querySelector('#atFault .radio-card.selected');
@@ -1248,13 +1207,13 @@
     if (!ok) return;
 
     waitForTrustedForm(function(certUrl) {
-      var claimInput = document.querySelector('input[name="claim"]:checked');
+      var claimInput = document.getElementById('claimType');
       var payload = {
         first_name:   document.getElementById('fname').value,
         last_name:    document.getElementById('lname').value,
         email:        document.getElementById('email').value,
         phone:        document.getElementById('phone').value,
-        case_type:    claimInput ? claimInput.value : '',
+        case_type:    claimInput && claimInput.value ? claimInput.value : '',
         trusted_form: certUrl,
         client_ip:    clientIp
       };
