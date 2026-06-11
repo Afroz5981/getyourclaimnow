@@ -559,14 +559,15 @@
 
   /* ─── URGENCY BAR ─────────────────────────────────────── */
   .urgency-bar {
-    background: var(--red);
+    background: #1f2937;
     padding: 10px 24px;
     text-align: center;
     font-size: 0.82rem; font-weight: 600;
-    color: var(--white);
+    color: rgba(255,255,255,0.75);
     letter-spacing: 0.02em;
+    border-bottom: 1px solid rgba(201,168,76,0.15);
   }
-  .urgency-bar span { font-weight: 800; }
+  .urgency-bar span { font-weight: 700; color: var(--gold); }
 
   /* Claim groups */
   .claim-groups-wrap {
@@ -652,7 +653,7 @@
 
 <!-- Urgency Bar -->
 <div class="urgency-bar">
-  ⚡ <span>Limited Time:</span> Free case evaluations — Statute of limitations may apply. Don't wait.
+  <span>Limited Time:</span> Free case evaluations — Statute of limitations may apply. Don't wait.
 </div>
 
 <!-- Header -->
