@@ -627,9 +627,13 @@
   }
   @media(max-width:860px){ .sticky-cta { display: block; } }
 
-  /* Tort cards full-width on mobile */
+  /* Tort cards 2-column on mobile */
   @media(max-width:600px){
-    .tort-card { max-width: none !important; flex: 1 1 100% !important; min-width: 0 !important; }
+    .tort-card { max-width: none !important; flex: 0 1 calc(50% - 7px) !important; min-width: 0 !important; }
+    .tort-card > div:first-child { height: 110px !important; }
+    .tort-card > div:last-child { padding: 12px 14px !important; }
+    .tort-card > div:last-child > div:first-child > div:first-child { font-size: 0.88rem !important; }
+    .tort-card > div:last-child > div:first-child > div:last-child { font-size: 0.72rem !important; line-height: 1.4 !important; }
   }
 </style>
 <!-- TrustedForm -->
